@@ -66,7 +66,12 @@ if ($_POST) {
     $KZaman = time();
     $Ad = ucwords_tr($_POST['i_Ad']);
     $Soyad = ucwords_tr($_POST['i_Soyad']);
-    if (mysqli_query($GLOBALS['DBC'], "INSERT INTO kullanicilar(kul_Ad, kul_Soyad, kul_DTarih, kul_Cinsiyet, kul_kAd, kul_EPosta, kul_Telefon, kul_KTarih, kul_Parola) VALUES('{$Ad}', '{$Soyad}', '{$DTarih}', '{$_POST['i_Cinsiyet']}', '{$_POST['i_KullaniciAdi']}', '{$_POST['i_EPosta']}', '{$_POST['i_TelNo']}', '{$KZaman}', '{$Parola}')")) {
+    $sqlUseradd = mysqli_query($GLOBALS['DBC'], "INSERT INTO kullanicilar(kul_Ad, kul_Soyad, kul_DTarih, kul_Cinsiyet, kul_kAd, kul_EPosta, kul_Telefon, kul_KTarih, kul_Parola) VALUES('{$Ad}', '{$Soyad}', '{$DTarih}', '{$_POST['i_Cinsiyet']}', '{$_POST['i_KullaniciAdi']}', '{$_POST['i_EPosta']}', '{$_POST['i_TelNo']}', '{$KZaman}', '{$Parola}')");
+    if ($sqlUseradd) {
+      $idSQL = mysqli_query($GLOBALS['DBC'], "SELECT kul_ID FROM kullanicilar WHERE kul_kAd = '{$_POST['i_KullaniciAdi']}'");
+      $kulIDvar = intval(mysqli_fetch_assoc($idSQL));
+      $yetki = 2; //kutuphanesorumulusu
+      $query = mysqli_query($GLOBALS['DBC'], "INSERT INTO kullanici_rol (kul_ID, rol_id) VALUES ('{$kulIDvar}', '{$yetki}')");
       $_SUCCESS = True;
     } else {
       array_push($Error, 'An error occurred during registration. Please try again later.');
