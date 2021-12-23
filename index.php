@@ -12,7 +12,7 @@ require_once 'assets/php/conf/dbConf.php';
 require_once 'assets/php/functions/mainFuncts.php';
 
 if (!empty($_SESSION['LoggedIn'])) {
-    header('Location: homepage.php');
+    header('Location: home.php');
 }
 
 ?>
