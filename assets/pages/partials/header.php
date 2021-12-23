@@ -35,7 +35,7 @@
                 Book
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                  <?php if ($_User->YetkiVarMi('showKitap')) { ?><a class="item"><i class="eye icon"></i> Görüntüle</a><?php } ?>
+                  <?php if ($_User->YetkiVarMi('showKitap')) { ?><a class="item" href="home.php?Page=ShowBook"><i class="eye icon"></i> View</a><?php } ?>
                   <?php if ($_User->YetkiVarMi('addKitap')) { ?><a class="item" href="home.php?Page=AddBook"><i class="add icon"></i> Add</a><?php } ?>
                 </div>
               </div>
@@ -45,7 +45,7 @@
                 Author
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                  <?php if ($_User->YetkiVarMi('showYazar')) { ?><a class="item"><i class="eye icon"></i> Görüntüle</a><?php } ?>
+                  <?php if ($_User->YetkiVarMi('showYazar')) { ?><a class="item" href="home.php?Page=ShowAuthor"><i class="eye icon"></i> View</a><?php } ?>
                   <?php if ($_User->YetkiVarMi('addYazar')) { ?><a class="item" href="home.php?Page=AddAuthor"><i class="add icon"></i> Add</a><?php } ?>
                 </div>
               </div>
@@ -55,7 +55,7 @@
                 Publisher
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                  <?php if ($_User->YetkiVarMi('showYayinevi')) { ?><a class="item"><i class="eye icon"></i> Görüntüle</a><?php } ?>
+                  <?php if ($_User->YetkiVarMi('showYayinevi')) { ?><a class="item"><i class="eye icon"></i> View</a><?php } ?>
                   <?php if ($_User->YetkiVarMi('addYayinevi')) { ?><a class="item" href="home.php?Page=AddPublisher"><i class="add icon"></i> Add</a><?php } ?>
                 </div>
               </div>
@@ -65,7 +65,7 @@
                 Book Type
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                  <?php if ($_User->YetkiVarMi('showTur')) { ?><a class="item"><i class="eye icon"></i> Görüntüle</a><?php } ?>
+                  <?php if ($_User->YetkiVarMi('showTur')) { ?><a class="item"><i class="eye icon"></i> View</a><?php } ?>
                   <?php if ($_User->YetkiVarMi('addTur')) { ?><a class="item" href="home.php?Page=AddType"><i class="add icon"></i> Add</a><?php } ?>
                 </div>
               </div>
@@ -82,8 +82,8 @@
                 Kullanıcı
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                  <?php if ($_User->YetkiVarMi('showKullanici')) { ?><a class="item"><i class="eye icon"></i> Görüntüle</a><?php } ?>
-                  <?php if ($_User->YetkiVarMi('addKullanici')) { ?><a class="item" href="home.php?Sayfa=KullaniciEkle"><i class="add icon"></i> Ekle</a><?php } ?>
+                  <?php if ($_User->YetkiVarMi('showKullanici')) { ?><a class="item"><i class="eye icon"></i> View</a><?php } ?>
+                  <a class="item"><i class="add icon"></i> Add</a>
                 </div>
               </div>
             <?php } ?>
@@ -92,8 +92,8 @@
                 Yetki
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                  <?php if ($_User->YetkiVarMi('showYetki')) { ?><a class="item"><i class="eye icon"></i> Görüntüle</a><?php } ?>
-                  <?php if ($_User->YetkiVarMi('addYetki')) { ?><a class="item" href="home.php?Sayfa=YetkiEkle"><i class="add icon"></i> Ekle</a><?php } ?>
+                  <?php if ($_User->YetkiVarMi('showYetki')) { ?><a class="item"><i class="eye icon"></i> View</a><?php } ?>
+                  <a class="item"><i class="add icon"></i> Add</a>
                 </div>
               </div>
             <?php } ?>

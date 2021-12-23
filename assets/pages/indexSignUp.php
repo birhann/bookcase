@@ -57,7 +57,7 @@ if ($_POST) {
 
   $KontrolTelefon = mysqli_query($GLOBALS['DBC'], "SELECT * FROM kullanicilar WHERE kul_Telefon = '{$_POST['i_TelNo']}'");
   if (mysqli_num_rows($KontrolTelefon) > 0) {
-    array_push($Error, 'Phone number is in use...');
+    array_push($Error, 'Phone number is being used...');
   }
 
   if (empty($Error)) {
@@ -68,10 +68,10 @@ if ($_POST) {
     $Soyad = ucwords_tr($_POST['i_Soyad']);
     $sqlUseradd = mysqli_query($GLOBALS['DBC'], "INSERT INTO kullanicilar(kul_Ad, kul_Soyad, kul_DTarih, kul_Cinsiyet, kul_kAd, kul_EPosta, kul_Telefon, kul_KTarih, kul_Parola) VALUES('{$Ad}', '{$Soyad}', '{$DTarih}', '{$_POST['i_Cinsiyet']}', '{$_POST['i_KullaniciAdi']}', '{$_POST['i_EPosta']}', '{$_POST['i_TelNo']}', '{$KZaman}', '{$Parola}')");
     if ($sqlUseradd) {
-      $idSQL = mysqli_query($GLOBALS['DBC'], "SELECT kul_ID FROM kullanicilar WHERE kul_kAd = '{$_POST['i_KullaniciAdi']}'");
-      $kulIDvar = intval(mysqli_fetch_assoc($idSQL));
-      $yetki = 2; //kutuphanesorumulusu
-      $query = mysqli_query($GLOBALS['DBC'], "INSERT INTO kullanici_rol (kul_ID, rol_id) VALUES ('{$kulIDvar}', '{$yetki}')");
+      // $idSQL = mysqli_query($GLOBALS['DBC'], "SELECT id FROM kullanicilar WHERE kul_kAd = '{$_POST['i_KullaniciAdi']}'");
+      // $kulIDvar = intval(mysqli_fetch_assoc($idSQL));
+      // $yetki = 2; //kutuphane sorumulusu
+      // $query = mysqli_query($GLOBALS['DBC'], "INSERT INTO kullanici_rol (kul_ID, rol_id) VALUES ('{$kulIDvar}', '{$yetki}')");
       $_SUCCESS = True;
     } else {
       array_push($Error, 'An error occurred during registration. Please try again later.');

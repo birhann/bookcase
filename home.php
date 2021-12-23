@@ -7,10 +7,8 @@ require_once 'assets/php/conf/siteConf.php';
 
 $_PGV = (empty($_GET['Page'])) ? 'Home' : $_GET['Page'];
 
-require_once 'assets/php/conf/router.php';
+require_once 'assets/php/conf/routes.php';
 require_once 'assets/php/conf/dbConf.php';
-
-
 require_once 'assets/php/functions/mainFuncts.php';
 
 if (empty($_SESSION['LoggedIn'])) {
@@ -79,6 +77,13 @@ if (!($_User->_userInfo['adr_ID'] > 0) && $_GET['Page'] != 'AddAddress') {
     <script src="assets/components/search.js"></script>
     <script src="assets/js/homePage.js"></script>
 
+
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
+
+
 </head>
 
 <body>
@@ -111,6 +116,9 @@ if (!($_User->_userInfo['adr_ID'] > 0) && $_GET['Page'] != 'AddAddress') {
                 break;
             case 'ShowEscrow':
                 require_once('assets/pages/showEscrow.php');
+                break;
+            case 'ShowAuthor':
+                require_once('assets/pages/showAuthor.php');
                 break;
             default:
                 require_once('assets/pages/homepage.php');

@@ -5,6 +5,54 @@ $YazarSQL = mysqli_query($GLOBALS['DBC'], "SELECT * FROM yazarlar");
 $EmanetSQL = mysqli_query($GLOBALS['DBC'], "SELECT * FROM emanetler");
 $UyeSQL = mysqli_query($GLOBALS['DBC'], "SELECT * FROM kullanicilar");
 ?>
+<h4 class="ui horizontal divider header">
+    <i class="chart bar icon"></i> Statistics
+</h4>
+<div class="ui center aligned four column grid statistics">
+    <div class="row">
+        <div class="column">
+            <div class="statistic">
+                <div class="value">
+                    <?= number_format(mysqli_num_rows($KitapSQL)); ?>
+                </div>
+                <div class="label">
+                    <i class="book icon"></i> Registered Book
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="statistic">
+                <div class="value">
+                    <?= number_format(mysqli_num_rows($YazarSQL)); ?>
+                </div>
+                <div class="label">
+                    <i class="pencil alternate icon"></i> Registered Author
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="statistic">
+                <div class="value">
+                    <?= number_format(mysqli_num_rows($EmanetSQL)); ?>
+                </div>
+                <div class="label">
+                    <i class="exchange icon"></i> Escrow count
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="statistic">
+                <div class="value">
+                    <?= number_format(mysqli_num_rows($UyeSQL)); ?>
+                </div>
+                <div class="label">
+                    <i class="user circle icon"></i> member
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="ui one column grid">
     <div class="row">
         <div class="column">
@@ -115,53 +163,6 @@ $UyeSQL = mysqli_query($GLOBALS['DBC'], "SELECT * FROM kullanicilar");
     </div>
 </div>
 <h4 class="ui horizontal divider header">
-    <i class="chart bar icon"></i> Statistics
-</h4>
-<div class="ui center aligned four column grid statistics">
-    <div class="row">
-        <div class="column">
-            <div class="statistic">
-                <div class="value">
-                    <?= number_format(mysqli_num_rows($KitapSQL)); ?>
-                </div>
-                <div class="label">
-                    <i class="book icon"></i> Registered Book
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="statistic">
-                <div class="value">
-                    <?= number_format(mysqli_num_rows($YazarSQL)); ?>
-                </div>
-                <div class="label">
-                    <i class="pencil alternate icon"></i> Registered Author
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="statistic">
-                <div class="value">
-                    <?= number_format(mysqli_num_rows($EmanetSQL)); ?>
-                </div>
-                <div class="label">
-                    <i class="exchange icon"></i> Escrow count
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="statistic">
-                <div class="value">
-                    <?= number_format(mysqli_num_rows($UyeSQL)); ?>
-                </div>
-                <div class="label">
-                    <i class="user circle icon"></i> member
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<h4 class="ui horizontal divider header">
     <i class="graph bar icon"></i> Graphs
 </h4>
 <div class="ui center aligned one column grid">
@@ -179,6 +180,7 @@ $UyeSQL = mysqli_query($GLOBALS['DBC'], "SELECT * FROM kullanicilar");
 
 </div>
 
+
 <div class="ui grid">
     <div class="ten wide column">
         <h4 class="ui horizontal divider header">
@@ -186,7 +188,7 @@ $UyeSQL = mysqli_query($GLOBALS['DBC'], "SELECT * FROM kullanicilar");
         </h4>
         <div class="ui feed">
             <?php
-            $AkisSQL = mysqli_query($GLOBALS['DBC'], "SELECT * FROM akis_log, kullanicilar WHERE akis_log.kul_ID = kullanicilar.kul_ID ORDER BY akis_Zaman DESC LIMIT 5");
+            $AkisSQL = mysqli_query($GLOBALS['DBC'], "SELECT * FROM akis_log, kullanicilar WHERE akis_log.kul_ID = kullanicilar.id ORDER BY akis_Zaman DESC LIMIT 5");
             if (mysqli_num_rows($AkisSQL) > 0) {
                 while ($AkisBilgi = mysqli_fetch_assoc($AkisSQL)) {
             ?>

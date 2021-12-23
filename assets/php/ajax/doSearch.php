@@ -8,7 +8,7 @@ switch ($_GET['Process']) {
     if ((mysqli_num_rows($KisiSQL) > 0)) {
       while ($KBilgi = mysqli_fetch_assoc($KisiSQL)) {
         array_push($JSON['results'], array(
-          'id' => $KBilgi['kul_ID'],
+          'id' => $KBilgi['id'],
           'title' => $KBilgi['kul_Ad'] . ' ' . $KBilgi['kul_Soyad'],
           'description' => $KBilgi['kul_Telefon']
         ));

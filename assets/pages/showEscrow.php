@@ -22,7 +22,7 @@ if ($_GET['Process'] == "Undo" && $_User->YetkiVarMi('geriEmanet')) {
   }
 }
 ?>
-<h1 class="ui header">Emanetler</h1>
+<h1 class="ui header">Escrows</h1>
 <div class="ui divider"></div>
 <?php if (!($_User->YetkiVarMi('addEmanet'))) { ?>
   <div class="ui error message">
@@ -60,7 +60,7 @@ if ($_GET['Process'] == "Undo" && $_User->YetkiVarMi('geriEmanet')) {
     <thead>
       <tr>
         <th>Escrow No</th>
-        <th>Issuer</th>
+        <th>Sender</th>
         <th>Receiver</th>
         <th>Book</th>
         <th>Escrow Date</th>
@@ -69,20 +69,12 @@ if ($_GET['Process'] == "Undo" && $_User->YetkiVarMi('geriEmanet')) {
     </thead>
     <tbody>
       <?php
-      $SQL = mysqli_query($GLOBALS['DBC'], "SELECT * FROM emanetler, kitaplar, kullanicilar WHERE emanetler.a_Tarih IS NULL && emanetler.kul_ID = kullanicilar.kul_ID && emanetler.kit_ID = kitaplar.kit_ID ORDER BY emanet_ID");
+      $SQL = mysqli_query($GLOBALS['DBC'], "SELECT * FROM emanetler, kitaplar, kullanicilar WHERE emanetler.a_Tarih IS NULL && emanetler.kul_ID = kullanicilar.id && emanetler.kit_ID = kitaplar.kit_ID ORDER BY emanet_ID");
       while ($EscrowInfo = mysqli_fetch_assoc($SQL)) {
-        $AuthorizedUser = mysqli_fetch_assoc(mysqli_query($GLOBALS['DBC'], "SELECT * FROM kullanicilar WHERE kul_ID = '{$EscrowInfo['yetkili_ID']}'"));
+        $AuthorizedUser = mysqli_fetch_assoc(mysqli_query($GLOBALS['DBC'], "SELECT * FROM kullanicilar WHERE id = '{$EscrowInfo['yetkili_ID']}'"));
       ?>
         <tr>
           <td> # <?= $EscrowInfo['emanet_ID']; ?> </td>
-          <td>
-            <h4 class="ui image header">
-              <img src="assets/images/avatar/default.jpg" class="ui mini rounded image">
-              <div class="content">
-                <?= $EscrowInfo['kul_Ad']; ?> <?= $EscrowInfo['kul_Soyad']; ?>
-              </div>
-            </h4>
-          </td>
           <td>
             <h4 class="ui image header">
               <img src="assets/images/avatar/default.jpg" class="ui mini rounded image">
@@ -91,6 +83,15 @@ if ($_GET['Process'] == "Undo" && $_User->YetkiVarMi('geriEmanet')) {
               </div>
             </h4>
           </td>
+          <td>
+            <h4 class="ui image header">
+              <img src="assets/images/avatar/default.jpg" class="ui mini rounded image">
+              <div class="content">
+                <?= $EscrowInfo['kul_Ad']; ?> <?= $EscrowInfo['kul_Soyad']; ?>
+              </div>
+            </h4>
+          </td>
+
           <td>
             <h4 class="ui image header">
               <img src="assets/php/viewPhoto.php?Tur=K&IMG=../images/bookCover/<?= $EscrowInfo['kit_Foto']; ?>" class="ui mini rounded image">

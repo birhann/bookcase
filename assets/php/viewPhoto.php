@@ -3,6 +3,9 @@ $photo = $_GET['IMG'];
 if (@$_GET['Tur'] == 'K') {
   $r_genislik = 400;
   $r_yukseklik = 600;
+} else if (@$_GET['Tur'] == 'authorList') {
+  $r_genislik = 66;
+  $r_yukseklik = 90;
 } else {
   $r_genislik = 450;
   $r_yukseklik = 450;

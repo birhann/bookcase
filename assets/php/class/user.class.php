@@ -13,14 +13,12 @@ class User
     $this->YetkileriGetir();
   }
 
-  // Veritabanından Kullanıcı Bilgilerini Getiriyoruz.
   protected function KullaniciBilgiGetir()
   {
-    $KontrolOturum = mysqli_query($GLOBALS['DBC'], "SELECT * FROM kullanicilar WHERE kul_ID = '{$this->_userID}'");
+    $KontrolOturum = mysqli_query($GLOBALS['DBC'], "SELECT * FROM kullanicilar WHERE id = '{$this->_userID}'");
     $this->_userInfo = mysqli_fetch_assoc($KontrolOturum);
   }
 
-  // Veritabanından Kullanıcının Yetkilerini Getiriyoruz.
   protected function YetkileriGetir()
   {
     $this->Roller = array();
@@ -43,7 +41,7 @@ class User
 
   public function getID()
   {
-    return $this->_userInfo['kul_ID'];
+    return $this->_userInfo['id'];
   }
 
   public function YetkiVarMi($Perm)

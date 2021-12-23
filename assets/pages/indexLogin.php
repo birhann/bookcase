@@ -12,7 +12,7 @@ if ($_POST) {
   if (empty($Error)) {
     $_SUCCESS = TRUE;
     $KBilgi = mysqli_fetch_assoc($SessionControl);
-    $_SESSION['LoggedIn'] = $KBilgi['kul_ID'];
+    $_SESSION['LoggedIn'] = $KBilgi['id'];
   }
 }
 ?>
@@ -37,6 +37,7 @@ if ($_POST) {
   </div>
 <?php } ?>
 <?php if ($_SUCCESS) {
+  require_once 'assets/php/functions/sessionUserCount.php';
   header("refresh:1;url=home.php"); ?>
   <div class="ui success message">
     <div class="header">

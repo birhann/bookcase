@@ -6,7 +6,7 @@ require_once 'assets/php/conf/siteConf.php';
 
 $_PGV = (empty($_GET['Page'])) ? 'LogIn' : $_GET['Page'];
 
-require_once 'assets/php/conf/router.php';
+require_once 'assets/php/conf/routes.php';
 require_once 'assets/php/conf/dbConf.php';
 
 require_once 'assets/php/functions/mainFuncts.php';

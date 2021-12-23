@@ -16,7 +16,7 @@ if ($_POST) {
   }
 }
 ?>
-<h1 class="ui header">Emanet Ver</h1>
+<h1 class="ui header">Give Escrow</h1>
 <div class="ui divider"></div>
 <?php if (!($_User->YetkiVarMi('addEmanet'))) { ?>
   <div class="ui error message">

@@ -4,7 +4,7 @@ if ($_POST) {
     $Il = $_POST['adrk_Il'];
     $provienceInfo = mysqli_fetch_assoc(mysqli_query($GLOBALS['DBC'], "SELECT * FROM il WHERE ilID = '{$_POST['adrk_Il']}'"));
   }
-  if ($_POST['adrk_Il']) {
+  if ($_POST['adrk_Ilce']) {
     $districtInfo = mysqli_fetch_assoc(mysqli_query($GLOBALS['DBC'], "SELECT * FROM ilce WHERE ilceID = '{$_POST['adrk_Ilce']}'"));
   }
   $Error = array();
@@ -15,7 +15,7 @@ if ($_POST) {
   if (empty($Error)) {
     if (mysqli_query($GLOBALS['DBC'], "INSERT INTO adresler(adr_Ismi, ilID, ilceID, adr_PKodu, adr_Adres, kul_ID) VALUES('{$_POST['adrk_Ismi']}', '{$_POST['adrk_Il']}', '{$_POST['adrk_Ilce']}', '{$_POST['adrk_PKodu']}', '{$_POST['adrk_Adres']}', '{$_User->getID()}')")) {
       $LastID = mysqli_insert_id($GLOBALS['DBC']);
-      if (mysqli_query($GLOBALS['DBC'], "UPDATE kullanicilar SET adr_ID = '{$LastID}' WHERE kul_ID = '{$_User->getID()}'")) {
+      if (mysqli_query($GLOBALS['DBC'], "UPDATE kullanicilar SET adr_ID = '{$LastID}' WHERE id = '{$_User->getID()}'")) {
         $_SUCCESS = True;
       } else {
         array_push($Error, 'An error occurred during registration. Please refresh the page and try again. {HK:02}');

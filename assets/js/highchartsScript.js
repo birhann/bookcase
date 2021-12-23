@@ -60,14 +60,14 @@ Highcharts.chart('highchartscontainer', {
     },
 
     data: {
-        csvURL: 'https://cdn.jsdelivr.net/gh/highcharts/highcharts@v7.0.0/samples/data/analytics.csv',
+        csvURL: '/analytics.csv',
         beforeParse: function (csv) {
             return csv.replace(/\n\n/g, '\n');
         }
     },
 
     title: {
-        text: 'Daily sessions at www.highcharts.com'
+        text: 'Daily sessions at BookCase'
     },
 
     subtitle: {
